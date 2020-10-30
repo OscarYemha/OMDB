@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 
 //import axios from 'axios'
+import {useInput} from "../utils/custom-hooks";
+import { log, success, error } from "../utils/logs";
+
 
 export const Register = () =>{
     const [state,setState] = useState("");
+
+    const email = useInput("email");
+    const password = useInput("password");
 
     const onChange = (e) => {
         e.preventDefault();
@@ -15,17 +21,17 @@ export const Register = () =>{
         e.preventDefault();
         //log("register attempt...");
         //try {
-          // POST user credentials
+           //POST user credentials
           //await axios.post("/api/register", {
-            //email: email.value,
+           // email: email.value,
             //password: password.value,
           //});
-        //  success(`new user registered`);
-          // Redirect to login!
-          //history.push("/login");
-       // } catch ({ response }) {
-          // something's not right...
-         // error(response.status, response.statusText);
+          //success(`new user registered`);
+           //Redirect to login!
+         // history.push("/login");
+        //} catch ({ response }) {
+           //something's not right...
+          //error(response.status, response.statusText);
         //}
      };
 
@@ -41,13 +47,15 @@ export const Register = () =>{
                             placeholder="Username"
                             required
                             onChange = {onChange}
+                            {...email}
                             />
                             <label>Password:</label>
                             <input 
-                            type="text" 
+                            type="password" 
                             placeholder="Password"
                             required
                             onChange = {onChange}
+                            {...password}
                             />
                             <button type="submit"className="btn">Create User</button>
                         </form>

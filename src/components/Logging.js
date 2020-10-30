@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 //import axios from 'axios'
 
+import { useInput } from "../utils/custom-hooks";
+import { log, success, error } from "../utils/logs";
+
 export const Logging = () =>{
     const [state,setState] = useState("");
+
+    const email = useInput("email");
+    const password = useInput("password");
 
     const onChange = (e) => {
         e.preventDefault();
@@ -43,13 +49,15 @@ export const Logging = () =>{
                             placeholder="Username"
                             required
                             onChange = {onChange}
+                            {...email}
                             />
                             <label>Password:</label>
                             <input 
-                            type="text" 
+                            type="password" 
                             placeholder="Password"
                             required
                             onChange={onChange}
+                            {...password}
                             />
                             <button type="submit"className="btn">Login</button>
                         </form>
